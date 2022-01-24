@@ -11,9 +11,8 @@ describe 'Regression Test Cases: ' do
     'surname' => 'Test Cases',
     'email' => 'testingregression@gmail.com',
     'password' => 'testingregression',
-    'registered' => 'User registered successfully!'
-    }
-
+    'registered' => 'User registered successfully!',
+  }
 
   include_context 'Register Form', register_data
 end

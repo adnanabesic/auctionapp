@@ -6,7 +6,6 @@ shared_context 'Register Form' do |register_data|
   let(:method) { @main.methods }
   let(:regression_method) { @main.regression_methods }
 
-
   name = register_data['name']
   surname = register_data['surname']
   email = register_data['email']
