@@ -1,4 +1,4 @@
-require_relative "../spec/helper"
+require_relative '../spec/helper'
 
 class RegressionMethods < HomePage
 
@@ -11,6 +11,6 @@ class RegressionMethods < HomePage
   private
 
   def search_containter
-    @browser.input(class: "Navbar_searchBar__15H_R")
+    @browser.input(class: 'Navbar_searchBar__15H_R')
   end
 end

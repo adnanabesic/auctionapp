@@ -2,10 +2,16 @@ require "rspec"
 require "watir"
 require "helper"
 
-shared_context "Filter Categories" do |sweaters, shoes, shirts, trousers, hats|
+shared_context "Filter Categories" do |filter_categories_data|
   let(:method) { @main.methods }
   let(:regression_method) { @main.regression_methods }
 
+  sweaters = filter_categories_data["sweaters"]
+  shoes = filter_categories_data["shoes"]
+  shirts = filter_categories_data["shirts"]
+  trousers = filter_categories_data["trousers"]
+  hats = filter_categories_data["hats"]
+  
   context "Filtering Clothes" do
     it "clicks on Shop" do
       method.shop_click

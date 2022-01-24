@@ -1,12 +1,12 @@
-require "rspec"
-require "watir"
-require "helper"
+require 'rspec'
+require 'watir'
+require 'helper'
 
-describe "Regression Test Cases: " do
+describe 'Regression Test Cases: ' do
   let(:method) { @main.methods }
   let(:regression_method) { @main.regression_methods }
 
-  keyword = "sweater"
+  keyword = 'sweater'
 
-  include_context "Search Item", keyword
+  include_context 'Search Item', keyword
 end
