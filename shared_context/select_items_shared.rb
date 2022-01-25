@@ -17,7 +17,7 @@ shared_context 'Select Item' do |selected_item|
       sleep 3
     end
 
-    it 'verify that item is selected ' do
+    it 'verify that item is selected' do
       expect(method.selected_item_text).to eql selected_item
     end
   end

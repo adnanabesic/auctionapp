@@ -17,13 +17,13 @@ shared_context 'Register Form' do |register_data|
       method.header_register_click
     end
 
-    it 'enters valid #{name} and #{surname}' do
+    it "enters valid #{name} and #{surname}" do
       method.name_set(name)
       method.surname_set(surname)
       sleep 5
     end
 
-    it 'enters valid #{email} and #{password}' do
+    it "enters valid #{email} and #{password}" do
       method.email_set(email)
       method.passwords_set(password)
     end

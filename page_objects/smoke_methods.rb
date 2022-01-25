@@ -1,8 +1,8 @@
-require_relative '../spec/helper'
+require_relative "../spec/helper"
 
 class Methods < HomePage
   def goto_abh_app
-    @browser.goto('https://auction-app-abh-internship.herokuapp.com/')
+    @browser.goto("https://auction-app-abh-internship.herokuapp.com/")
   end
 
   #actions
@@ -40,7 +40,7 @@ class Methods < HomePage
   end
 
   def registered_alert
-    @browser.div(class: 'alert alert-success').inner_html
+    @browser.div(class: "alert alert-success").inner_html
   end
 
   def logged_in_text
@@ -87,32 +87,8 @@ class Methods < HomePage
     select_shop.click
   end
 
-  def clothes_click
-    clothes.click
-  end
-
-  def sweaters_click
-    sweaters.click
-  end
-
   def active_filters_text
     active_filters.text
-  end
-
-  def shoes_click
-    shoes.click
-  end
-
-  def shirts_click
-    shirts.click
-  end
-
-  def trousers_click
-    trousers.click
-  end
-
-  def hats_click
-    hats.click
   end
 
   def minPrice_set(min)
@@ -123,50 +99,58 @@ class Methods < HomePage
     maxPrice.set max
   end
 
+  def product_category_click(category)
+    product_category(category).click
+  end
+
+  def product_subcategory_click(subcategory_value)
+    product_subcategory(subcategory_value).click
+  end
+
   private
 
   def header
-    @browser.a(class: 'Header_login__zfh4r')
+    @browser.a(class: "Header_login__zfh4r")
   end
 
   def header_register
-    @browser.a(class: 'Header_register__3rjSu')
+    @browser.a(class: "Header_register__3rjSu")
   end
 
   def name
-    @browser.input(name: 'name')
+    @browser.input(name: "name")
   end
 
   def surname
-    @browser.input(name: 'surname')
+    @browser.input(name: "surname")
   end
 
   def email
-    @browser.text_field(name: 'email')
+    @browser.text_field(name: "email")
   end
 
   def passwords
-    @browser.text_field(name: 'password')
+    @browser.text_field(name: "password")
   end
 
   def sign_in
-    @browser.button(class: 'Forms_formSubmitButton__2QwHn')
+    @browser.button(class: "Forms_formSubmitButton__2QwHn")
   end
 
   def register
-    @browser.button(class: 'Forms_formSubmitButton__2QwHn')
+    @browser.button(class: "Forms_formSubmitButton__2QwHn")
   end
 
   def logged_in
-    @browser.a(class: 'Header_logout__1HHzG')
+    @browser.a(class: "Header_logout__1HHzG")
   end
 
   def new_arrival
-    @browser.li(class: 'tab-list-item tab-list-active')
+    @browser.li(class: "tab-list-item tab-list-active")
   end
 
   def select_item
-    @browser.a(href: '/items/9')
+    @browser.a(href: "/items/9")
   end
 
   def selected_item
@@ -174,58 +158,42 @@ class Methods < HomePage
   end
 
   def bid_input
-    @browser.text_field(class: 'ItemOverview_bidInput__3ic45')
+    @browser.text_field(class: "ItemOverview_bidInput__3ic45")
   end
 
   def bid
-    @browser.button(class: 'ItemOverview_bidButton__B8KhK btn btn-outline-*')
+    @browser.button(class: "ItemOverview_bidButton__B8KhK btn btn-outline-*")
   end
 
   def bidder
-    @browser.div(class: 'ItemOverview_bidMessageHeaderSuccess__bDqOb')
+    @browser.div(class: "ItemOverview_bidMessageHeaderSuccess__bDqOb")
   end
 
   def search_containter
-    @browser.input(class: 'Navbar_searchBar__15H_R')
+    @browser.input(class: "Navbar_searchBar__15H_R")
   end
 
   def select_shop
-    @browser.a(href: '/shop/0')
+    @browser.a(href: "/shop/0")
   end
 
-  def clothes
-    @browser.span(class: 'Category_collapseIcon__26lw8')
+  def product_category(category)
+    @browser.element(xpath: "//button[contains(text(),'#{category}')]")
   end
 
-  def sweaters
-    @browser.input(value: '2')
-  end
-
-  def shoes
-    @browser.input(value: '3')
-  end
-
-  def shirts
-    @browser.input(value: '8')
-  end
-
-  def trousers
-    @browser.input(value: '9')
-  end
-
-  def hats
-    @browser.input(value: '10')
+  def product_subcategory(subcategory_value)
+    @browser.input(value: "#{subcategory_value}")
   end
 
   def active_filters
-    @browser.button(class: 'ActiveFilters_filter__xHUuV')
+    @browser.button(class: "ActiveFilters_filter__xHUuV")
   end
 
   def minPrice
-    @browser.input(class: 'PriceMenu_minPriceInput__2GC2p')
+    @browser.input(class: "PriceMenu_minPriceInput__2GC2p")
   end
 
   def maxPrice
-    @browser.input(class: 'PriceMenu_maxPriceInput__2RsAW')
+    @browser.input(class: "PriceMenu_maxPriceInput__2RsAW")
   end
 end

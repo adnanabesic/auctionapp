@@ -1,107 +1,41 @@
-require 'rspec'
-require 'watir'
-require 'helper'
+require "rspec"
+require "watir"
+require "helper"
 
-shared_context 'Filter Categories' do |filter_categories_data|
+shared_context "Filter Categories" do |filter_categories_data|
   let(:method) { @main.methods }
   let(:regression_method) { @main.regression_methods }
 
-  sweaters = filter_categories_data['sweaters']
-  shoes = filter_categories_data['shoes']
-  shirts = filter_categories_data['shirts']
-  trousers = filter_categories_data['trousers']
-  hats = filter_categories_data['hats']
-
-  context 'Filtering Clothes' do
-    it 'clicks on Shop' do
+  context "Filtering Clothes" do
+    it "clicks on Shop" do
       method.shop_click
       sleep 3
     end
+  end
 
-    it 'clicks on Clothes in Categories' do
-      method.clothes_click
-      sleep 3
-    end
-
-    context 'Sweaters filter' do
-      it 'applies filter for Sweaters ' do
-        method.sweaters_click
-        sleep 3
-      end
-
-      it 'verifies that filter is applied' do
-        expect(method.active_filters_text).to eql sweaters
-        sleep 3
-      end
-
-      it 'turns off filter on Sweaters' do
-        method.sweaters_click
-        sleep 3
+  filter_categories_data.each do |category_data|
+    context "Click on #{category_data["category"]}" do
+      it "clicks on category #{category_data["category"]}" do
+        method.product_category_click(category_data["category"])
       end
     end
 
-    context 'Shoes filter' do
-      it 'applies filter for Shoes' do
-        method.shoes_click
-        sleep 3
-      end
+    category_data["subcategories_data"].each do |subcategory_data|
+      context "Click on #{subcategory_data["subcategory"]}" do
+        it "clicks on subcategory #{subcategory_data["subcategory"]}" do
+          method.product_subcategory_click(subcategory_data["subcategory_value"])
+          sleep 1
+        end
 
-      it 'verifies that filter is applied' do
-        expect(method.active_filters_text).to eql shoes
-        sleep 3
-      end
+        it "filters text to be eql #{subcategory_data["sweaters"]}" do
+          expect(method.active_filters_text).to eql subcategory_data["filters_subcategory_value"]
+          sleep 1
+        end
 
-      it 'turns off filter on Shoes' do
-        method.shoes_click
-        sleep 3
-      end
-    end
-
-    context 'Shirts filter' do
-      it 'applies filter for Shirts ' do
-        method.shirts_click
-        sleep 3
-      end
-
-      it 'verifies that filter is applied' do
-        expect(method.active_filters_text).to eql shirts
-      end
-
-      it 'turns off filter on Shirts' do
-        method.shirts_click
-        sleep 3
-      end
-    end
-
-    context 'Trousers filter' do
-      it 'applies filter for Trousers ' do
-        method.trousers_click
-        sleep 3
-      end
-
-      it 'verifies that filter is applied' do
-        expect(method.active_filters_text).to eql trousers
-      end
-
-      it 'turns off filter on Trousers' do
-        method.trousers_click
-        sleep 3
-      end
-    end
-
-    context 'Sweaters filter' do
-      it 'applies filter for Hats ' do
-        method.hats_click
-        sleep 3
-      end
-
-      it 'verifies that filter is applied' do
-        expect(method.active_filters_text).to eql hats
-      end
-
-      it 'turns off filter on Hats' do
-        method.hats_click
-        sleep 3
+        it "clicks on subcategory #{subcategory_data["subcategory"]} to turn off filter" do
+          method.product_subcategory_click(subcategory_data["subcategory_value"])
+          sleep 1
+        end
       end
     end
   end

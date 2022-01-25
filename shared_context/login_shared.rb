@@ -11,7 +11,7 @@ shared_context 'Login' do |username, password, log_out|
       method.header_click
     end
 
-    it 'enters valid #{username} and #{password}' do
+    it "enters valid #{username} and #{password}" do
       method.email_set(username)
       method.passwords_set(password)
     end
